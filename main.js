@@ -41,10 +41,12 @@ async function LoadConfigs() {
 function ApplyCommissions (input, configs) {
     const users = [];
     const commisions = [];
-
+    console.log(configs)
    input.forEach(ele => {
         if (ele.type === 'cash_in') {
-            if (ele.operation.amount * 0.03 >= 5) {
+            let {percents,max} = configs.cashIn
+            console.log(percents, max.amount)
+            if (ele.operation.amount * percents >= max.amount) {
                 commisions.push(5)
             } else {
                 commisions.push(ele.operation.amount * 0.03)
