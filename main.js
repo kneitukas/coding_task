@@ -41,19 +41,54 @@ async function LoadConfigs() {
 function ApplyCommissions (input, configs) {
     const users = [];
     const commisions = [];
-    console.log(configs)
+
    input.forEach(ele => {
         if (ele.type === 'cash_in') {
             let {percents,max} = configs.cashIn
-            console.log(percents, max.amount)
             if (ele.operation.amount * percents >= max.amount) {
                 commisions.push(5)
             } else {
                 commisions.push(ele.operation.amount * 0.03)
             }
-            console.log(commisions)
+        }
+        if (ele.type === 'cash_out') {
+            if (ele.user_type === 'natural') {
+                let date = new Date(ele.date)
+                let day = date.getDay()
+
+                const id = users.findIndex( usr => usr.user_id == ele.user_id)
+                if (id == -1) {
+                    const user = new User(ele.user_id)
+                    user.AddToTotal(ele.operation.amount, ele.date)
+                    users.push(user)
+                } 
+                 else {
+                    users[id].AddToTotal(ele.operation.amount, ele.date)
+                 }
+            
+            }
+      
         }
     });
+    console.log(users[0].GetTotal())
+}
+
+class User {
+    user_id;
+    deposit = []
+    constructor(id) {
+        this.user_id = id;  
+    }
+
+    AddToTotal(amount, date) {
+        this.deposit.push({amount, date})
+    }
+
+    GetTotal() {
+         let total = 0;
+         this.deposit.forEach( el => total += el.amount)
+         return total
+    }
 }
 
 
