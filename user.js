@@ -1,23 +1,23 @@
 class User {
-  constructor(id) {
+  constructor(id, config) {
+    this.config = config
     this.deposit = [];
     this.user_id = id;
   }
 }
 
 class NaturalUser extends User {
-  constructor(id, week_limit, curentWeek) {
+  constructor(id, week_limit) {
     super(id);
     this.week_limit = week_limit;
-    this.curentWeek = curentWeek;
+    this.cap = week_limit;
   }
 
   AddToTotal(amount, date) {
     const week = GetWeek(new Date(date));
     const i = this.deposit.push({ amount, date, week });
     const boo = this.IsOverLimit(i - 1);
-    console.log(boo)
-    return boo ? amount : false
+    return boo 
   }
 
   IsOverLimit(i, amount) {
@@ -25,11 +25,22 @@ class NaturalUser extends User {
     const filtered = this.deposit
       .filter((item) => obj.week == item.week)
       .map((val) => (val = val.amount));
-    const total = filtered.reduce((acc, curr) => acc + curr);
-     if (total - amount < this.week_limit) {
-        return amount - this.week_limit;
-     }
-    return true
+      if (filtered.length === 1) {
+        this.cap = this.week_limit
+      } 
+        const result = filtered[filtered.length - 1] % this.cap
+        console.log(this.cap)
+        if (result <= 0) {
+          this.cap = 0
+        } else {
+          this.cap -= result
+        }
+        return result
+  
+    // const total = filtered.reduce((acc, curr) => {
+    //   acc + curr
+    // });
+
   }
 }
 

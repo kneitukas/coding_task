@@ -20,9 +20,8 @@ class Operations {
             let { percents } = this.configs.cashOut.natural;
             const user = this.db.GetOrCreateUser(ele.user_id, "natural") 
             const num = user.AddToTotal(ele.operation.amount, ele.date);
-            //   console.log(num)
               if (num) {
-                  return num * percents / 100
+                  return (num) * percents 
               } else {
                   return 0
               }
