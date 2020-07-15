@@ -7,16 +7,9 @@ class Db {
         this.configs = configs
     }
 
-     GetUserById (id) {
-       const index = this._users.findIndex((usr) => usr.user_id == id);
-       return users[index]
-    }
-
     GetOrCreateUser(id, type) {
-
-        const index = this._users.findIndex((usr) => usr.user_id == id);
-   
-        if (index === -1) {
+        const user = this._users.find((usr) => usr.user_id == id);
+        if (user == undefined | null) {
             if (type === 'natural') {
                 const {week_limit} = this.configs.cashOut.natural
                 const user = new NaturalUser(
@@ -27,7 +20,7 @@ class Db {
                 return user
             }
         } else {
-           return this._users[index]
+           return user
         }
     }
 }
