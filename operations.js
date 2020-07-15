@@ -1,4 +1,4 @@
-class Operations {
+export class Operations {
   constructor(configs, db) {
     this.configs = configs;
     this.db = db;
@@ -18,9 +18,7 @@ class Operations {
         let { percents } = this.configs.cashOut.natural;
         const user = this.db.GetOrCreateUser(ele.user_id, "natural");
         const num = user.AddToTotal(ele.operation.amount, ele.date);
-        console.log(num)
-        return num ? (num * percents) / 100 : 0
-     
+        return num ? (num * percents) / 100 : 0;
 
       case "juridical":
         const { percents: juridical, min } = this.configs.cashOut.juridical;
@@ -29,5 +27,3 @@ class Operations {
     }
   }
 }
-
-module.exports = Operations;

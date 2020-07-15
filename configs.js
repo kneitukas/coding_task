@@ -1,6 +1,6 @@
-const axios = require("axios");
+import axios from "axios";
 
-class Configs {
+  class Configs {
   async LoadConfigs() {
     const configs = {
       cashIn: {},
@@ -33,4 +33,4 @@ class Configs {
   }
 }
 
-module.exports = new Configs();
+export let configs = new Configs()

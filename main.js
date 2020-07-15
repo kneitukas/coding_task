@@ -1,16 +1,13 @@
-const fs = require("fs");
-const Configs = require('./configs')
-const Db = require('./database');
-const Operations = require('./operations');
-
-
-// global scope, imitating db here
+import fs from "fs";
+import { configs as Configs } from "./configs.js";
+import { Db } from "./database.js";
+import { Operations } from "./operations.js";
 
 (async function Main() {
   const inputJson = ReadArgs();
-  const configs = await Configs.LoadConfigs()
-  const db = new Db(configs)
-  const operations = new Operations(configs, db)
+  const configs = await Configs.LoadConfigs();
+  const db = new Db(configs);
+  const operations = new Operations(configs, db);
   ApplyCommissions(inputJson, operations);
 })();
 
@@ -23,7 +20,6 @@ function ReadArgs() {
 }
 
 function ApplyCommissions(input, operations) {
-
   const commisions = [];
 
   input.forEach((ele) => {
@@ -34,6 +30,6 @@ function ApplyCommissions(input, operations) {
       commisions.push(operations.NewCashOutOperation(ele));
     }
   });
-  console.log(commisions)
 
+  commisions.forEach(el =>   console.log(el));
 }
