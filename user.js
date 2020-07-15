@@ -1,5 +1,5 @@
 class User {
-  constructor(id, config) {
+  constructor(id) {
     this.deposit = [];
     this.user_id = id;
   }
@@ -35,6 +35,8 @@ class NaturalUser extends User {
 
       if (this.cap <= 0) {
         this.cap = 0;
+      } else {
+        return 0
       }
     }
     return diff;
