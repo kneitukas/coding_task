@@ -31,5 +31,5 @@ function ApplyCommissions(input, operations) {
     }
   });
 
-  commisions.forEach(el =>   console.log(el));
+  commisions.forEach(el => console.log(el));
 }
