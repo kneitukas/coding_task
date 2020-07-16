@@ -1,4 +1,4 @@
-import GetWeek from "./helpers.js";
+import {GetWeek} from "./helpers.js";
 
 export class User {
   constructor(id) {

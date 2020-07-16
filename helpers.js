@@ -1,4 +1,4 @@
-export default function GetWeek(dt) {
+export function GetWeek(dt) {
   const date = dt;
   date.setHours(0, 0, 0, 0);
   date.setDate(date.getDate() + 3 - ((date.getDay() + 6) % 7));
@@ -12,4 +12,8 @@ export default function GetWeek(dt) {
         7
     )
   );
+}
+
+export function Ceil(value, decimals) {
+  return Number(Math.ceil(value+'e'+decimals)+'e-'+decimals);
 }

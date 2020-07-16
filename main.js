@@ -2,6 +2,7 @@ import fs from "fs";
 import { configs as Configs } from "./configs.js";
 import { Db } from "./database.js";
 import { Operations } from "./operations.js";
+import { Ceil } from './helpers.js'
 
 (async function Main() {
   const inputJson = ReadArgs();
@@ -31,5 +32,5 @@ function ApplyCommissions(input, operations) {
     }
   });
 
-  commisions.forEach(el => console.log(el));
+  commisions.forEach(el => console.log(Ceil(el, 2)));
 }
