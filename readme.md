@@ -1,5 +1,9 @@
 # Banking app
 
+## Requirements
+
+Node 14.5.0 or higher (because I am using ES modules)
+
 ## Installation
 
 Clone or download the .zip version of the repository
