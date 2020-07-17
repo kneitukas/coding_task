@@ -1,10 +1,13 @@
 
+import Configs from './configs.js'
+import Db from './database.js'
+
 
 export class Operations {
-  constructor(configs, db) {
-    this.configs = configs;
-    this.db = db;
+  constructor() {   
+    this.configs = Configs.GetConfigs()
   }
+
   NewCashInOperation(ele) {
     let { percents, max } = this.configs.cashIn;
     if ((ele.operation.amount * percents) / 100 >= max.amount) {
@@ -18,7 +21,7 @@ export class Operations {
     switch (ele.user_type) {
       case "natural":
         let { percents } = this.configs.cashOut.natural;
-        const user = this.db.GetOrCreateUser(ele.user_id, "natural");
+        const user = Db.GetOrCreateUser(ele.user_id, "natural");
         const num = user.AddToTotal(ele.operation.amount, ele.date);
         return num ? (num * percents) / 100 : 0;
 
@@ -29,3 +32,6 @@ export class Operations {
     }
   }
 }
+
+export default new Operations()
+

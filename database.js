@@ -1,10 +1,15 @@
 import { NaturalUser } from "./user.js";
+import Configs from './configs.js'
 
 export class Db {
   _users = [];
 
-  constructor(configs) {
-    this.configs = configs;
+  constructor() {
+    this.configs = Configs.GetConfigs();
+  }
+
+  GetUsers() {
+    return this._users[0]
   }
 
   GetOrCreateUser(id, type) {
@@ -21,3 +26,5 @@ export class Db {
     }
   }
 }
+
+export default new Db()
