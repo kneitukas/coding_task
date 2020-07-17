@@ -15,5 +15,5 @@ export function GetWeek(dt) {
 }
 
 export function Ceil(value, decimals) {
-  return Number(Math.ceil(value+'e'+decimals)+'e-'+decimals);
+  return Number(Math.ceil(value + "e" + decimals) + "e-" + decimals);
 }

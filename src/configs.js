@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 class Configs {
   _configs = {
     cashIn: {},
@@ -8,7 +7,7 @@ class Configs {
       natural: {},
       juridical: {},
     },
-  }
+  };
 
   async LoadConfigs() {
     try {
@@ -33,9 +32,9 @@ class Configs {
     }
   }
 
-   GetConfigs() {
-    return this._configs
+  GetConfigs() {
+    return this._configs;
   }
 }
 
-export default new Configs()
+export default new Configs();

@@ -1,12 +1,10 @@
-
-import Configs from './configs.js'
-import Db from './database.js'
-import { Ceil } from './helpers.js'
-
+import Configs from "./configs.js";
+import Db from "./database.js";
+import { Ceil } from "./helpers.js";
 
 export class Operations {
-  constructor() {   
-    this.configs = Configs.GetConfigs()
+  constructor() {
+    this.configs = Configs.GetConfigs();
   }
 
   NewCashInOperation(ele) {
@@ -29,10 +27,9 @@ export class Operations {
       case "juridical":
         const { percents: juridical, min } = this.configs.cashOut.juridical;
         const result = (ele.operation.amount * juridical) / 100;
-        return result <= min.amount ? min.amount : Ceil(result,2);
+        return result <= min.amount ? min.amount : Ceil(result, 2);
     }
   }
 }
 
-export default new Operations()
-
+export default new Operations();

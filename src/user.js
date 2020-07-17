@@ -1,4 +1,4 @@
-import {GetWeek} from "./helpers.js";
+import { GetWeek } from "./helpers.js";
 
 export class User {
   constructor(id) {
@@ -12,13 +12,12 @@ export class NaturalUser extends User {
     super(id);
     this.week_limit = week_limit;
     this.cap = week_limit;
-
   }
 
   AddToTotal(amount, date) {
     const week = GetWeek(new Date(date));
-    const i = this.deposit.push({ amount, date, week });
-    const result = this.IsOverLimit(i - 1);
+    const length = this.deposit.push({ amount, date, week });
+    const result = this.IsOverLimit(length - 1);
     return result;
   }
 
