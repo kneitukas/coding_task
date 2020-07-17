@@ -1,4 +1,4 @@
-import Configs from '../configs.js'
+import Configs from '../src/configs.js'
 import pkg from 'chai'
 const {expect} = pkg;
 

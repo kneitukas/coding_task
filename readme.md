@@ -16,12 +16,12 @@ npm install
 
 ## Usage
 
-To run the app pass 2 arguments (path to entry file) (path to input file)
+To run pass the input file path as an argumment
 ```bash
-node main.js sample.json
+npm start sample.json
 ```
 
 To run all tests
 ```bash
-npm run test
+npm test
 ```

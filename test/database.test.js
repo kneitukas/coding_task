@@ -1,4 +1,4 @@
-import  Db  from '../database.js'
+import  Db  from '../src/database.js'
 import pkg from 'chai'
 const { expect } = pkg;
 

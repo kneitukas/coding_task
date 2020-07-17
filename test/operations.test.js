@@ -1,4 +1,4 @@
-import Operations from '../operations.js'
+import Operations from '../src/operations.js'
 
 import pkg from 'chai'
 const { expect } = pkg;

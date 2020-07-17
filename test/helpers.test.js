@@ -1,4 +1,4 @@
-import { GetWeek, Ceil} from '../helpers.js';
+import { GetWeek, Ceil} from '../src/helpers.js';
 import assert from 'assert'
 
 
