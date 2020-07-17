@@ -6,7 +6,7 @@ Clone or download the .zip version of the repository
 
 ```bash
 git clone https://github.com/kneitukas/coding_task.git
-cd coding_task.git
+cd coding_task
 npm install
 ```
 
