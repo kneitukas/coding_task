@@ -1,8 +1,6 @@
 import fs from "fs";
 import Configs from "./configs.js";
 import Operations from "./operations.js";
-import { Ceil } from './helpers.js';
-
 
 (async function Main() {
     const inputObject = ReadArgs(process.argv);
@@ -32,5 +30,5 @@ export function ApplyCommissions(input) {
 }
 
 function PrintToStdout(commisions) {
-    commisions.forEach(el => console.log(Ceil(el, 2)));
+    commisions.forEach(el => console.log(el));
 }

@@ -1,13 +1,9 @@
 import {GetWeek} from "./helpers.js";
-import Configs from './configs.js'
 
 export class User {
   constructor(id) {
     this.deposit = [];
     this.user_id = id;
-    
-    this.conf = Configs.GetConfigs()
-     console.log(this.conf)
   }
 }
 
@@ -22,9 +18,8 @@ export class NaturalUser extends User {
   AddToTotal(amount, date) {
     const week = GetWeek(new Date(date));
     const i = this.deposit.push({ amount, date, week });
-    const boo = this.IsOverLimit(i - 1);
-
-    return boo;
+    const result = this.IsOverLimit(i - 1);
+    return result;
   }
 
   IsOverLimit(i) {

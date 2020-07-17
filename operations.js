@@ -1,6 +1,7 @@
 
 import Configs from './configs.js'
 import Db from './database.js'
+import { Ceil } from './helpers.js'
 
 
 export class Operations {
@@ -13,7 +14,7 @@ export class Operations {
     if ((ele.operation.amount * percents) / 100 >= max.amount) {
       return 5;
     } else {
-      return (ele.operation.amount * percents) / 100;
+      return Ceil((ele.operation.amount * percents) / 100, 2);
     }
   }
 
@@ -23,12 +24,12 @@ export class Operations {
         let { percents } = this.configs.cashOut.natural;
         const user = Db.GetOrCreateUser(ele.user_id, "natural");
         const num = user.AddToTotal(ele.operation.amount, ele.date);
-        return num ? (num * percents) / 100 : 0;
+        return num ? Ceil((num * percents) / 100, 2) : 0;
 
       case "juridical":
         const { percents: juridical, min } = this.configs.cashOut.juridical;
         const result = (ele.operation.amount * juridical) / 100;
-        return result <= min.amount ? min.amount : result;
+        return result <= min.amount ? min.amount : Ceil(result,2);
     }
   }
 }
