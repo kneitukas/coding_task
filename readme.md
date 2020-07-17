@@ -12,7 +12,7 @@ npm install
 
 ## Usage
 
-To run the app pass 2 arguments [<entryPath>, <inputPath>]
+To run the app pass 2 arguments (path to entry file) (path to input file)
 ```bash
 node main.js sample.json
 ```
